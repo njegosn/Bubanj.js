@@ -1,3 +1,7 @@
+
+
+//Detekcija pritisnutog dugmeta
+
 var numberOfDrums = document.querySelectorAll(".drum").length;
 
 for (var i = 0; i<numberOfDrums; i++) {
@@ -6,15 +10,27 @@ for (var i = 0; i<numberOfDrums; i++) {
 
 var buttonInnerHTML = this.innerHTML;
 
-  switch (buttonInnerHTML) {
+makeSound(buttonInnerHTML);
+});
+}
+
+//Detekcija  pritisnute tipke
+
+document.addEventListener("keydown", function(event) {
+  makeSound(event.key);
+});
+
+function makeSound(key) {
+
+  switch (key) {
     case "w":
       var tom1 = new Audio("sounds/tom-1.mp3");
       tom1.play();
    break;
 
-case "a":
-var tom2 = new Audio("sounds/tom-2.mp3");
-tom2.play();
+  case "a":
+  var tom2 = new Audio("sounds/tom-2.mp3");
+  tom2.play();
   break;
 
   case "s":
@@ -41,9 +57,5 @@ tom2.play();
      var kick = new Audio("sounds/kick-bass.mp3");
      kick.play();
        break;
-    default:console.log(buttonInnerHTML);
-
-  }
-
-});
-}
+    default:console.log(key);
+}}
